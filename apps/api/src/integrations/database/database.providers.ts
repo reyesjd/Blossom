@@ -1,11 +1,15 @@
 import { Sequelize } from 'sequelize-typescript';
+import {
+  CharacterModel,
+  EpisodeCharacterModel,
+  EpisodeModel,
+  LocationModel,
+} from '../../libs';
 
 export const databaseProviders = [
   {
     provide: 'SEQUELIZE',
     useFactory: async () => {
-      console.log(process.env.DBPASS);
-
       const sequelize = new Sequelize({
         dialect: 'postgres',
         host: process.env.DBHOST,
@@ -13,9 +17,16 @@ export const databaseProviders = [
         username: process.env.DBUSER,
         password: process.env.DBPASS,
         database: process.env.DBNAME,
+        logging: false,
       });
-      sequelize.addModels([]);
-      await sequelize.sync();
+      sequelize.addModels([
+        CharacterModel,
+        EpisodeModel,
+        LocationModel,
+        EpisodeCharacterModel,
+      ]);
+      await sequelize.sync({ alter: true });
+
       return sequelize;
     },
   },

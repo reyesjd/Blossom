@@ -1,0 +1,71 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type LocationModel {
+  id: Int!
+  name: String!
+  type: String!
+  dimension: String!
+  url: String!
+  residents: [CharacterModel!]!
+  created_at: DateTime!
+  updated_at: DateTime!
+  isActive: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type EpisodeModel {
+  id: Int!
+  name: String!
+  air_date: String!
+  episode: String!
+  url: String!
+  characters: [CharacterModel!]!
+  created_at: DateTime!
+  updated_at: DateTime!
+  isActive: Boolean!
+}
+
+type CharacterModel {
+  id: Int!
+  name: String!
+  status: CharacterStatus!
+  species: String!
+  type: String!
+  gender: String!
+  originId: Int!
+  locationId: Int!
+  origin: LocationModel
+  location: LocationModel!
+  episodes: [EpisodeModel!]!
+  image: String!
+  url: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+  isActive: Boolean!
+}
+
+"""Status of the character"""
+enum CharacterStatus {
+  Alive
+  Dead
+  Unknown
+}
+
+type Query {
+  characters(filters: CharacterFilterInput): [CharacterModel!]!
+}
+
+input CharacterFilterInput {
+  id: Float
+  status: String
+  species: String
+  gender: String
+  name: String
+  originId: Float
+}

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { CacheModule } from '@nestjs/cache-manager';
-import { DatabaseModule } from './integrations/database';
+import { CharacterModule } from './modules';
 
 @Module({
   imports: [
@@ -11,10 +11,11 @@ import { DatabaseModule } from './integrations/database';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
+      playground: true,
     }),
-    DatabaseModule,
 
     // App module imports
+    CharacterModule,
   ],
   controllers: [],
   providers: [],

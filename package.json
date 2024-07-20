@@ -1,0 +1,19 @@
+{
+  "name": "blossom",
+  "version": "1.0.0",
+  "main": "index.js",
+  "packageManager": "npm@10.8.2",
+  "scripts": {
+    "dev": "turbo dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "^2.0.7"
+  }
+}

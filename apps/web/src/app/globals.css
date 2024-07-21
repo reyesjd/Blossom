@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar styles */
+.scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #34d399 #f3f4f6; /* Color verde y gris claro para el track */
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 12px; /* Ancho del scrollbar */
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #f3f4f6; /* Color del track */
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #34d399; /* Color del thumb */
+    border-radius: 8px; /* Radio del borde para el thumb */
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #2c6f4d; /* Color del thumb al pasar el cursor */
+  }
+  

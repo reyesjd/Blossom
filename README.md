@@ -46,15 +46,16 @@ This project is an API and a web application built in a monorepo using NestJS fo
 
     ```env
     # Variables for the backend (apps/api)
-    API_PORT=3001
-    DATABASE_HOST=localhost
-    DATABASE_PORT=5432
-    DATABASE_USER=your_user
-    DATABASE_PASSWORD=your_password
-    DATABASE_NAME=your_database
+    DBHOST=localhost
+    DBPORT=5432
+    DBUSER=appuser
+    DBPASS=app@123456
+    DBNAME=appdb
+    APIPORT=3001
 
     # Variables for the frontend (apps/web)
-    NEXT_PUBLIC_API_URL=http://localhost:3001/graphql
+    NEXT_PUBLIC_GRAPHQL_URL="http://localhost:3001/graphql"
+    CLIENTPORT=3000
     ```
 
 ## Running

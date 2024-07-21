@@ -11,7 +11,6 @@ import { CharacterModule } from './modules';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
-      playground: true,
     }),
 
     // App module imports

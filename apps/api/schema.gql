@@ -45,9 +45,11 @@ type CharacterModel {
   episodes: [EpisodeModel!]!
   image: String!
   url: String!
+  isFavorite: Boolean!
   created_at: DateTime!
   updated_at: DateTime!
   isActive: Boolean!
+  comments: String!
 }
 
 """Status of the character"""
@@ -68,4 +70,11 @@ input CharacterFilterInput {
   gender: String
   name: String
   originId: Float
+  isFavorite: Boolean
+  comments: String
+}
+
+type Mutation {
+  favoriteCharacter(id: Float!): CharacterModel!
+  addComment(id: Float!, comment: String!): CharacterModel!
 }

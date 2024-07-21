@@ -1,5 +1,5 @@
 // dto/character-filter.dto.ts
-import { IsString, IsOptional, IsInt } from 'class-validator';
+import { IsString, IsOptional, IsInt, IsBoolean } from 'class-validator';
 
 export class CharacterFilterDto {
   @IsOptional()
@@ -25,4 +25,8 @@ export class CharacterFilterDto {
   @IsOptional()
   @IsInt()
   originId?: number;
+
+  @IsOptional()
+  @IsBoolean()
+  isFavorite?: boolean;
 }

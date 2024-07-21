@@ -19,4 +19,10 @@ export class CharacterFilterInput {
 
   @Field({ nullable: true })
   originId?: number;
+
+  @Field({ nullable: true })
+  isFavorite?: boolean;
+
+  @Field({ nullable: true })
+  comments?: string;
 }

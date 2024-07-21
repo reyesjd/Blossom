@@ -34,7 +34,6 @@
     "cache-manager": "^5.7.3",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.5",
-    "graphql": "^16.9.0",
     "graphql-tools": "^9.0.1",
     "nest-commander": "^3.14.0",
     "nestjs-command": "^3.1.4",

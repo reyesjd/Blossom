@@ -28,6 +28,7 @@ export class CharacterService {
     gender?: string;
     name?: string;
     originId?: number;
+    isFavorite?: boolean;
   }): Promise<CharacterModel[]> {
     const cacheKey = JSON.stringify(filters);
     const cachedData = await this.cacheManager.get<CharacterModel[]>(cacheKey);
@@ -66,6 +67,10 @@ export class CharacterService {
       where.originId = filters.originId;
     }
 
+    if (filters.isFavorite) {
+      where.isFavorite = filters.isFavorite;
+    }
+
     const characters = await this.characterModel.findAll({
       where,
       include: [
@@ -78,5 +83,35 @@ export class CharacterService {
     await this.cacheManager.set(cacheKey, characters), { ttl: 60 };
 
     return characters;
+  }
+
+  @LogExecutionTime()
+  async favoriteCharacter(id: number): Promise<CharacterModel> {
+    const character = await this.characterModel.findByPk(id);
+
+    if (!character) {
+      throw new Error('Character not found');
+    }
+
+    character.isFavorite = !character.isFavorite;
+
+    await character.save();
+
+    return character;
+  }
+
+  @LogExecutionTime()
+  async addComment(id: number, comment: string): Promise<CharacterModel> {
+    const character = await this.characterModel.findByPk(id);
+
+    if (!character) {
+      throw new Error('Character not found');
+    }
+
+    character.comments = comment;
+
+    await character.save();
+
+    return character;
   }
 }

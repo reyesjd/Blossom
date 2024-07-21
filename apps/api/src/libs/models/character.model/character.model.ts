@@ -74,6 +74,10 @@ export class CharacterModel extends Model {
   @Field()
   url: string;
 
+  @Column({ defaultValue: false })
+  @Field(() => Boolean)
+  isFavorite: boolean;
+
   @Column
   @Field(() => Date)
   created_at: Date;
@@ -85,4 +89,8 @@ export class CharacterModel extends Model {
   @Column({ defaultValue: true })
   @Field(() => Boolean)
   isActive: boolean;
+
+  @Column({ defaultValue: '' })
+  @Field()
+  comments: string;
 }

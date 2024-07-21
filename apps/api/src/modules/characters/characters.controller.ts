@@ -1,5 +1,5 @@
 // character.controller.ts
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Patch, Query } from '@nestjs/common';
 import { CharacterService } from './characters.service';
 import { CharacterFilterDto } from './dtos/character-filter.dto';
 import { CharacterModel } from 'src/libs';
@@ -13,5 +13,10 @@ export class CharacterController {
     @Query() filter: CharacterFilterDto,
   ): Promise<CharacterModel[]> {
     return this.characterService.findAll(filter);
+  }
+
+  @Patch()
+  async favoriteCharacter(@Query('id') id: number): Promise<CharacterModel> {
+    return this.characterService.favoriteCharacter(id);
   }
 }
